@@ -1,6 +1,13 @@
 <template>
-  <div>
-    <img src="../assets/SC-Big-Mineral-Dark.png" height="300" alt @click="collect" />
+  <div class="view overlay zoom">
+    <img
+      id="mineral"
+      class="img-fluid rounded-circle shadow btn btn-info"
+      src="../assets/SC-Big-Mineral-Dark.png"
+      height="300"
+      alt="Big Mineral"
+      @click="collect"
+    />
   </div>
 </template>
 
@@ -15,5 +22,9 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+#mineral {
+  user-select: none;
+  width: 20em;
+}
 </style>

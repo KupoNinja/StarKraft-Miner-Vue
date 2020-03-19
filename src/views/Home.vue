@@ -8,7 +8,11 @@
         </div>
       </header>
       <div class="row">
-        <BigMineral />
+        <div class="col-4"></div>
+        <div class="col-4 text-center">
+          <BigMineral />
+        </div>
+        <div class="col-4"></div>
       </div>
     </div>
   </div>
