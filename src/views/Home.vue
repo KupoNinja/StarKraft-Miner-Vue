@@ -1,18 +1,31 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="container-fluid">
+      <div class="row">
+        <h1>StarKraft Miner</h1>
+        <BigMineral />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import BigMineral from "../components/BigMineral";
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
-    HelloWorld
+    BigMineral
   }
-}
+};
 </script>
+
+<style lang="scss" scoped>
+.home {
+  height: 100vh;
+  width: 100vw;
+  background-image: url("https://blogs.esa.int/space19plus/files/2019/03/nebula.jpg");
+  background-size: contain;
+}
+</style>
