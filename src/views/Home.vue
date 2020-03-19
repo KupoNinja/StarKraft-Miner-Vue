@@ -1,8 +1,13 @@
 <template>
   <div class="home">
     <div class="container-fluid">
+      <header class="row h-25 bg-dark text-light">
+        <div id="header-title" class="col-md-3 text-center m-auto">
+          <h1>StarKraft Miner</h1>
+          <audio src="assets/sound/Terran-One.mp3" loop="true" controls></audio>
+        </div>
+      </header>
       <div class="row">
-        <h1>StarKraft Miner</h1>
         <BigMineral />
       </div>
     </div>
