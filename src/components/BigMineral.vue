@@ -4,7 +4,7 @@
     <img
       id="mineral"
       class="img-fluid rounded-circle shadow btn btn-info"
-      src="../assets/SC-Big-Mineral-Dark.png"
+      src="../assets/img/SC-Big-Mineral-Dark.png"
       height="300"
       alt="Big Mineral"
       @click="collect"

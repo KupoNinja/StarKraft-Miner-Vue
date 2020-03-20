@@ -41,7 +41,7 @@ export default {
 .home {
   height: 100vh;
   width: 100vw;
-  background-image: url("https://blogs.esa.int/space19plus/files/2019/03/nebula.jpg");
+  background-image: url("../assets/img/SC-BC-BG.jpg");
   background-size: contain;
 }
 </style>

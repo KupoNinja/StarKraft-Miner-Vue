@@ -8,7 +8,7 @@ export default new Vuex.Store({
     mineralCount: 0,
     idleCount: 0,
     totalCount: 0,
-    clickUpgrades: [
+    upgrades: [
       {
         name: "SCV",
         price: 25,
