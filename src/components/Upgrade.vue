@@ -20,7 +20,11 @@ export default {
   },
   methods: {
     buyUpgrade(upgrade) {
-      let newUpgrade = {};
+      let newUpgrade = {
+        name: upgrade.name,
+        type: upgrade.type
+      };
+      this.$store.dispatch("buyUpgrade", newUpgrade);
     }
   }
 };

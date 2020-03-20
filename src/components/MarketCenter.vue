@@ -6,6 +6,7 @@
     <div v-for="upgrade in upgrades.clickUpgrades" :key="upgrade.name" col-sm-6>
       <Upgrade :upgrade="upgrade" />
     </div>
+    <h4>Idle Upgrades:</h4>
     <div v-for="upgrade in upgrades.idleUpgrades" :key="upgrade.name" col-sm-6>
       <Upgrade :upgrade="upgrade" />
     </div>
