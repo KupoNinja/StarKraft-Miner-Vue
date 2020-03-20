@@ -7,7 +7,15 @@ export default new Vuex.Store({
   state: {
     mineralCount: 0,
     idleCount: 0,
-    totalMultiplier: 0
+    totalCount: 0,
+    clickUpgrades: [
+      {
+        name: "SCV",
+        price: 25,
+        quantity: 0,
+        multiplier: 1
+      }
+    ]
   },
   mutations: {},
   actions: {

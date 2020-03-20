@@ -3,7 +3,7 @@
     <h3>Stats</h3>
     <hr class="text-light" />
     <h5>Minerals (mined per second): {{ idleCount }}</h5>
-    <h5>Total Minerals Multiplier: {{ totalMultiplier }}</h5>
+    <h5>Total Minerals Mined: {{ totalCount }}</h5>
   </div>
 </template>
 
@@ -14,8 +14,8 @@ export default {
     idleCount() {
       return this.$store.state.idleCount;
     },
-    totalMultiplier() {
-      return this.$store.state.totalMultiplier;
+    totalCount() {
+      return this.$store.state.totalCount;
     }
   }
 };

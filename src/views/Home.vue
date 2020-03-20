@@ -13,7 +13,9 @@
         <div class="col-4 text-center">
           <BigMineral />
         </div>
-        <div class="col-4"></div>
+        <div class="col-4">
+          <MarketCenter />
+        </div>
       </div>
     </div>
   </div>
@@ -22,13 +24,15 @@
 <script>
 import BigMineral from "../components/BigMineral";
 import Stats from "../components/Stats";
+import MarketCenter from "../components/MarketCenter";
 // @ is an alias to /src
 
 export default {
   name: "Home",
   components: {
     BigMineral,
-    Stats
+    Stats,
+    MarketCenter
   }
 };
 </script>
