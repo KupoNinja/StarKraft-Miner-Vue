@@ -7,7 +7,9 @@
         </div>
       </header>
       <div class="row">
-        <div class="col-4"></div>
+        <div class="col-4">
+          <Stats />
+        </div>
         <div class="col-4 text-center">
           <BigMineral />
         </div>
@@ -19,12 +21,14 @@
 
 <script>
 import BigMineral from "../components/BigMineral";
+import Stats from "../components/Stats";
 // @ is an alias to /src
 
 export default {
   name: "Home",
   components: {
-    BigMineral
+    BigMineral,
+    Stats
   }
 };
 </script>

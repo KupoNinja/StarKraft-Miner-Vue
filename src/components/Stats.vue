@@ -1,8 +1,31 @@
 <template>
-  <div></div>
+  <div class="border border-light rounded text-light">
+    <h3>Stats</h3>
+    <hr class="text-light" />
+    <h5>Minerals (mined per second): {{ idleCount }}</h5>
+    <h5>Total Minerals Multiplier: {{ totalMultiplier }}</h5>
+  </div>
 </template>
 
 <script>
-export default {};
+export default {
+  name: "Stats",
+  computed: {
+    idleCount() {
+      return this.$store.state.idleCount;
+    },
+    totalMultiplier() {
+      return this.$store.state.totalMultiplier;
+    }
+  }
+};
 </script>
 
+<style lang="scss">
+.border {
+  border-width: 5px !important;
+}
+hr {
+  border: 1px solid white;
+}
+</style>

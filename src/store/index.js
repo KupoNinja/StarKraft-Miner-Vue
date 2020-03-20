@@ -7,13 +7,12 @@ export default new Vuex.Store({
   state: {
     mineralCount: 0,
     idleCount: 0,
-    totalCount: 0
+    totalMultiplier: 0
   },
   mutations: {},
   actions: {
     collect({ dispatch, commit, state }) {
       state.mineralCount++;
-      console.log(state.mineralCount);
     }
   },
   modules: {}
