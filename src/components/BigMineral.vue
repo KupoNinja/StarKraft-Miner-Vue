@@ -1,5 +1,6 @@
 <template>
   <div class="view overlay zoom">
+    <h2 class="text-light">{{ mineralCount }}</h2>
     <img
       id="mineral"
       class="img-fluid rounded-circle shadow btn btn-info"
@@ -16,7 +17,12 @@ export default {
   name: "BigMineral",
   methods: {
     collect() {
-      console.log("Collecting...");
+      this.$store.dispatch("collect");
+    }
+  },
+  computed: {
+    mineralCount() {
+      return this.$store.state.mineralCount;
     }
   }
 };
