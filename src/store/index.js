@@ -14,8 +14,15 @@ export default new Vuex.Store({
         price: 25,
         quantity: 0,
         multiplier: 1
+      },
+      {
+        name: "Probe",
+        price: 120,
+        quantity: 0,
+        multiplier: 20
       }
-    ]
+    ],
+    inventory: []
   },
   mutations: {},
   actions: {

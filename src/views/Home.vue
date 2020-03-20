@@ -2,8 +2,11 @@
   <div class="home">
     <div class="container-fluid">
       <header class="row h-25 bg-dark text-light">
-        <div id="header-title" class="col-md-3 text-center m-auto">
+        <div id="header-title" class="col-md-3 text-center">
           <h1>StarKraft Miner</h1>
+        </div>
+        <div class="col">
+          <Inventory />
         </div>
       </header>
       <div class="row">
@@ -17,6 +20,7 @@
           <MarketCenter />
         </div>
       </div>
+      <div class="row"></div>
     </div>
   </div>
 </template>
@@ -25,6 +29,7 @@
 import BigMineral from "../components/BigMineral";
 import Stats from "../components/Stats";
 import MarketCenter from "../components/MarketCenter";
+import Inventory from "../components/Inventory";
 // @ is an alias to /src
 
 export default {
@@ -32,7 +37,8 @@ export default {
   components: {
     BigMineral,
     Stats,
-    MarketCenter
+    MarketCenter,
+    Inventory
   }
 };
 </script>

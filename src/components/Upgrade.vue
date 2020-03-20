@@ -7,7 +7,7 @@
         src="../assets/img/mineral-rss.jpg"
         alt="Tiny mineral icon"
       />
-      <p>{{ upgrade.price }}</p>
+      <p>Price: {{ upgrade.price }}</p>
     </button>
   </div>
 </template>
