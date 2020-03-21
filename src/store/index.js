@@ -54,17 +54,19 @@ export default new Vuex.Store({
       } else {
         state.inventory.idleUpgrades.push(upgrade);
       }
+    },
+    // NOTE This isn't working
+    updateUpgrade(state, upgrade) {
+      upgrade.quantity++;
+      upgrade.multiplier = upgrade.multiplier * upgrade.quantity;
+      upgrade.price = Math.ceil((upgrade.price + 25) * 1.1);
     }
-
-    // updateclickUpgradesQuantity(state, { upgrade }) {
-    //   if (upgrade.type == "click") {
-    //     state.inventory.clickUpgrades.push(upgrade);
-    //   }
-    // }
   },
   actions: {
     collect({ dispatch, commit, state }) {
       state.mineralCount++;
+
+      // This is wrong. Need to add multipliers for totalCount
       state.totalCount++;
 
       // This works!
@@ -73,30 +75,33 @@ export default new Vuex.Store({
       });
     },
     buyUpgrade({ dispatch, commit, state }, upgrade) {
+      let mineralCount = state.mineralCount;
+
       // This is gross...
       if (upgrade.type == "click") {
-        let upgradeToBuy = state.upgrades.clickUpgrades.find(
-          u => u.name == upgrade.name
-        );
         let boughtUpgrade = state.inventory.clickUpgrades.find(
           u => u.name == upgrade.name
         );
+        let upgradeToBuy = state.upgrades.clickUpgrades.find(
+          u => u.name == upgrade.name
+        );
 
-        // Handle updating inventory...
+        if (mineralCount < upgradeToBuy.price) {
+          // Play fail sound
+          console.log("We require more minerals");
+          return;
+        }
+        mineralCount -= upgradeToBuy.price;
+
         if (boughtUpgrade) {
-          boughtUpgrade.quantity++;
-          commit("updateQuantity", { clickUpgrades: boughtUpgrade });
+          commit("updateUpgrade", { clickUpgrades: boughtUpgrade });
         } else {
+          commit("updateUpgrade", { clickUpgrades: upgradeToBuy });
           commit("buyUpgrade", upgradeToBuy);
         }
-        console.log(state.inventory);
-        // Handle buying inventory
       }
+      console.log(state.inventory);
     }
-    // TODO Update upgrade after buying. Increase price and multiplier
-    // updateUpgrade(upgrade) {
-    //   upgrade.multiplier = upgrade.multiplier * upgrade.quantity;
-    // }
   },
   modules: {}
 });
