@@ -1,8 +1,9 @@
 <template>
-  <div class="row border border-dark rounded text-light">
-    <h2 class="col-2 md-auto">Inventory</h2>
+  <div class="border border-dark rounded text-light">
+    <h2 class>Inventory</h2>
     <div v-for="upgrade in inventory.upgrades" :key="upgrade.id">
       <h5 class="mr-3">{{ upgrade.name }}: {{ upgrade.quantity }} |</h5>
+      <p>+{{ upgrade.multiplier }} per click</p>
     </div>
   </div>
 </template>

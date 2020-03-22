@@ -1,6 +1,8 @@
 <template>
   <div>
     <button class="btn btn-block text-light" @click="buyUpgrade(upgrade)">
+      <h4 v-if="upgrade.type == 'click'">Click Upgrade:</h4>
+      <h4 v-if="upgrade.type == 'idle'">Idle Upgrade:</h4>
       <h5>{{ upgrade.name }}</h5>
       <img
         class="mineral-upgrade-img img-fluid"

@@ -2,10 +2,10 @@
   <div class="home">
     <div class="container-fluid">
       <header class="row h-25 bg-dark text-light">
-        <div id="header-title" class="col-md-3 text-center">
+        <div id="header-title" class="col-md-4 text-center">
           <h1>StarKraft Miner</h1>
         </div>
-        <div class="col">
+        <div class="col-md-4">
           <Inventory />
         </div>
       </header>
