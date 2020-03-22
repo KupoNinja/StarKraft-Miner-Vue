@@ -51,12 +51,6 @@ export default new Vuex.Store({
       state.inventory.upgrades.push(upgrade);
     },
     updateUpgrade(state, upgrade) {
-      // This is gross too...
-
-      // let upgradeToUpdate = state.inventory.clickUpgrades.find(
-      //   u => u.id == upgradeId
-      // );
-      debugger;
       state.mineralCount -= upgrade.price;
       upgrade.quantity++;
       upgrade.multiplier = upgrade.multiplier * upgrade.quantity;
@@ -66,8 +60,6 @@ export default new Vuex.Store({
   actions: {
     collect({ dispatch, commit, state }) {
       state.mineralCount++;
-
-      // This is wrong. Need to add multipliers for totalCount
       state.totalCount++;
 
       if (state.inventory.upgrades.length > 0) {
@@ -79,17 +71,17 @@ export default new Vuex.Store({
     },
     buyUpgrade({ dispatch, commit, state }, upgrade) {
       let mineralCount = state.mineralCount;
-
-      let boughtUpgrade = state.inventory.upgrades.find(
-        u => u.name == upgrade.name
-      );
       let upgradeToBuy = state.upgrades.find(u => u.name == upgrade.name);
 
-      if (mineralCount < upgrade.price) {
+      if (mineralCount < upgradeToBuy.price) {
         // Play fail sound
         console.log("We require more minerals");
         return;
       }
+
+      let boughtUpgrade = state.inventory.upgrades.find(
+        u => u.name == upgrade.name
+      );
 
       if (boughtUpgrade) {
         commit("updateUpgrade", boughtUpgrade);
