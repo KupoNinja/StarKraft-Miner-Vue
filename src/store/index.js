@@ -90,6 +90,15 @@ export default new Vuex.Store({
         commit("buyUpgrade", upgradeToBuy);
       }
       console.log(state.inventory);
+    },
+    idleMine({ dispatch, commit, state }) {
+      // Collects way too much
+      state.inventory.upgrades.forEach(u => {
+        if (u.type == "idle") {
+          state.mineralCount += u.multiplier;
+          state.idleCount = u.multiplier;
+        }
+      });
     }
   },
   modules: {}

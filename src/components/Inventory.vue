@@ -9,8 +9,6 @@
 </template>
 
 <script>
-// import Upgrade from "./Upgrade";
-
 export default {
   name: "Inventory",
   computed: {
@@ -18,9 +16,6 @@ export default {
       return this.$store.state.inventory;
     }
   }
-  //   components: {
-  //     Upgrade
-  //   }
 };
 </script>
 

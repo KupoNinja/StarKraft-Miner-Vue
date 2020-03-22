@@ -31,11 +31,21 @@ export default {
   },
   methods: {
     buyUpgrade(upgrade) {
+      // Beginning or end of method?
+      if (upgrade.type == "idle") {
+        this.startIdleMiner();
+      }
       let newUpgrade = {
         name: upgrade.name,
         type: upgrade.type
       };
       this.$store.dispatch("buyUpgrade", newUpgrade);
+    },
+    startIdleMiner() {
+      setInterval(this.idleMine, 3000);
+    },
+    idleMine() {
+      this.$store.dispatch("idleMine");
     }
   }
 };
