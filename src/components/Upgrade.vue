@@ -1,6 +1,10 @@
 <template>
   <div>
-    <button class="btn btn-block text-light" @click="buyUpgrade(upgrade)">
+    <button
+      :disabled="mineralCount < upgrade.price"
+      class="btn btn-block text-light"
+      @click="buyUpgrade(upgrade)"
+    >
       <h4 v-if="upgrade.type == 'click'">Click Upgrade:</h4>
       <h4 v-if="upgrade.type == 'idle'">Idle Upgrade:</h4>
       <h5>{{ upgrade.name }}</h5>
@@ -19,6 +23,11 @@ export default {
   name: "Upgrade",
   props: {
     upgrade: { type: Object, required: true }
+  },
+  computed: {
+    mineralCount() {
+      return this.$store.state.mineralCount;
+    }
   },
   methods: {
     buyUpgrade(upgrade) {
