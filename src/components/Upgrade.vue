@@ -2,7 +2,7 @@
   <div>
     <button
       :disabled="mineralCount < upgrade.price"
-      class="btn btn-block text-light"
+      class="btn btn-block text-light border"
       @click="buyUpgrade(upgrade)"
     >
       <h4 v-if="upgrade.type == 'click'">Click Upgrade:</h4>
@@ -14,6 +14,8 @@
         alt="Tiny mineral icon"
       />
       <p>Price: {{ upgrade.price }}</p>
+      <p v-if="upgrade.type == 'click'">Multiplier: +{{ upgrade.multiplier }} per click</p>
+      <p v-if="upgrade.type == 'idle'">Multiplier: +{{ upgrade.multiplier }} per 3 seconds</p>
     </button>
   </div>
 </template>
@@ -21,6 +23,11 @@
 <script>
 export default {
   name: "Upgrade",
+  data() {
+    return {
+      interval: 0
+    };
+  },
   props: {
     upgrade: { type: Object, required: true }
   },
@@ -31,9 +38,9 @@ export default {
   },
   methods: {
     buyUpgrade(upgrade) {
-      // Beginning or end of method?
       if (upgrade.type == "idle") {
-        this.startIdleMiner();
+        clearInterval(this.interval);
+        this.startIdleCollect();
       }
       let newUpgrade = {
         name: upgrade.name,
@@ -41,11 +48,11 @@ export default {
       };
       this.$store.dispatch("buyUpgrade", newUpgrade);
     },
-    startIdleMiner() {
-      setInterval(this.idleMine, 3000);
+    startIdleCollect() {
+      this.interval = setInterval(this.idleCollect, 3000);
     },
-    idleMine() {
-      this.$store.dispatch("idleMine");
+    idleCollect() {
+      this.$store.dispatch("idleCollect");
     }
   }
 };

@@ -64,8 +64,10 @@ export default new Vuex.Store({
 
       if (state.inventory.upgrades.length > 0) {
         state.inventory.upgrades.forEach(u => {
-          state.mineralCount += u.multiplier;
-          state.totalCount += u.multiplier;
+          if (u.type == "click") {
+            state.mineralCount += u.multiplier;
+            state.totalCount += u.multiplier;
+          }
         });
       }
     },
@@ -91,12 +93,13 @@ export default new Vuex.Store({
       }
       console.log(state.inventory);
     },
-    idleMine({ dispatch, commit, state }) {
+    idleCollect({ dispatch, commit, state }) {
       // Collects way too much
       state.inventory.upgrades.forEach(u => {
         if (u.type == "idle") {
           state.mineralCount += u.multiplier;
-          state.idleCount = u.multiplier;
+          state.idleCount = u.multiplier; // This won't work
+          state.totalCount += u.multiplier;
         }
       });
     }
