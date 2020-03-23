@@ -94,20 +94,27 @@ export default new Vuex.Store({
       console.log(state.inventory);
     },
     idleCollect({ dispatch, commit, state }) {
-      // dispatch("updateIdleCount");
+      dispatch("updateIdleCount");
 
       // TODO Need to update idleCount by adding all idle type multipliers in inventory
       state.inventory.upgrades.forEach(u => {
         if (u.type == "idle") {
           state.mineralCount += u.multiplier;
-          state.idleCount = u.multiplier; // This won't work
           state.totalCount += u.multiplier;
         }
       });
-    }
-    // updateIdleCount({ dispatch, commit, state }) {
+    },
+    updateIdleCount({ dispatch, commit, state }) {
+      let totalIdleMultiplier = 0;
 
-    // }
+      state.inventory.upgrades.forEach(u => {
+        if (u.type == "idle") {
+          totalIdleMultiplier += u.multiplier;
+        }
+      });
+
+      state.idleCount = totalIdleMultiplier;
+    }
   },
   modules: {}
 });

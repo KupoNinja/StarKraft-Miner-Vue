@@ -35,27 +35,27 @@ export default {
     mineralCount() {
       return this.$store.state.mineralCount;
     },
-    upgradeMultiplier () {
-      if (this.upgrade.quantity <= 1 ) {
+    upgradeMultiplier() {
+      if (this.upgrade.quantity <= 1) {
         return this.upgrade.multiplier;
       }
 
-      return this.upgrade.multiplier * this.upgrade.quantity
+      return this.upgrade.multiplier * this.upgrade.quantity;
     }
   },
   methods: {
     buyUpgrade(upgrade) {
+      let newUpgrade = {
+        name: upgrade.name,
+        type: upgrade.type
+      };
+      this.$store.dispatch("buyUpgrade", newUpgrade);
       if (upgrade.type == "idle") {
         // NOTE Works if buying one specific idle upgrade.
         // Pretty sure 'this' is causing the issue
         clearInterval(this.interval);
         this.startIdleCollect();
       }
-      let newUpgrade = {
-        name: upgrade.name,
-        type: upgrade.type
-      };
-      this.$store.dispatch("buyUpgrade", newUpgrade);
     },
     startIdleCollect() {
       this.interval = setInterval(this.idleCollect, 3000);
