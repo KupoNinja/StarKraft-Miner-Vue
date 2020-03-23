@@ -14,8 +14,8 @@
         alt="Tiny mineral icon"
       />
       <p>Price: {{ upgrade.price }}</p>
-      <p v-if="upgrade.type == 'click'">Multiplier: +{{ upgrade.multiplier }} per click</p>
-      <p v-if="upgrade.type == 'idle'">Multiplier: +{{ upgrade.multiplier }} per 3 seconds</p>
+      <p v-if="upgrade.type == 'click'">Multiplier: +{{ upgradeMultiplier }} per click</p>
+      <p v-if="upgrade.type == 'idle'">Multiplier: +{{ upgradeMultiplier }} per 3 seconds</p>
     </button>
   </div>
 </template>
@@ -34,11 +34,20 @@ export default {
   computed: {
     mineralCount() {
       return this.$store.state.mineralCount;
+    },
+    upgradeMultiplier () {
+      if (this.upgrade.quantity <= 1 ) {
+        return this.upgrade.multiplier;
+      }
+
+      return this.upgrade.multiplier * this.upgrade.quantity
     }
   },
   methods: {
     buyUpgrade(upgrade) {
       if (upgrade.type == "idle") {
+        // NOTE Works if buying one specific idle upgrade.
+        // Pretty sure 'this' is causing the issue
         clearInterval(this.interval);
         this.startIdleCollect();
       }

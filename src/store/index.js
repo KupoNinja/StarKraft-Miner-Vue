@@ -94,7 +94,9 @@ export default new Vuex.Store({
       console.log(state.inventory);
     },
     idleCollect({ dispatch, commit, state }) {
-      // Collects way too much
+      // dispatch("updateIdleCount");
+
+      // TODO Need to update idleCount by adding all idle type multipliers in inventory
       state.inventory.upgrades.forEach(u => {
         if (u.type == "idle") {
           state.mineralCount += u.multiplier;
@@ -103,6 +105,9 @@ export default new Vuex.Store({
         }
       });
     }
+    // updateIdleCount({ dispatch, commit, state }) {
+
+    // }
   },
   modules: {}
 });
