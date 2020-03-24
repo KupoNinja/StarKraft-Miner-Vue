@@ -32,6 +32,7 @@ import MarketCenter from "../components/MarketCenter";
 import Inventory from "../components/Inventory";
 // @ is an alias to /src
 
+// Howdy
 export default {
   name: "Home",
   components: {

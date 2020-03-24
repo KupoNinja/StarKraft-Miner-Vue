@@ -1,4 +1,4 @@
 module.exports = {
   outputDir: "./docs",
-  publicPath: "/starkraft-miner-vue" // Name of your repo here
+  publicPath: "/Starkraft-Miner-Vue" // Name of your repo here
 };
